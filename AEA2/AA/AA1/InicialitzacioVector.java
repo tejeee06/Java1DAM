@@ -14,7 +14,7 @@ public class InicialitzacioVector {
 
         for (int num : numPars) {
 
-            System.out.println(+num +" ");
+            System.out.println(+num);
 
         }
 

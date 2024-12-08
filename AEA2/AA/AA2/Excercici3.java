@@ -23,7 +23,7 @@ public class Excercici3 {
         if (files1 != files2 || columnes1 != columnes2) {
 
             System.out.println("error , les dimensions de les matrius no coincideixen , per poder realitzar la suma han de ser iguals !!");
-            return; //! Utilitzem return per aturar el codi en el cas de que s'introdueixin les dades correctament
+            return; //! Utilitzem return per aturar el codi en el cas de que s'introdueixin les dades incorrectament
 
         }
 

@@ -19,7 +19,7 @@ public class Exercici4 {
         Arrays.sort(vector);
 
         System.out.println("El vector endreçat es : ");
-        System.out.println("");
+        System.out.println();
 
 
         for (int num : vector) {

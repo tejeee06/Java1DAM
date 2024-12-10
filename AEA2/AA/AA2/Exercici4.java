@@ -28,7 +28,7 @@ public class Exercici4 {
 
         }
 
-        System.out.println("");
+        System.out.println();
         System.out.println("El segon element mes petit del vector es " +vector[1]);
     }
 }

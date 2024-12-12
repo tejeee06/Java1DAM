@@ -1,7 +1,7 @@
 package AEA2.AA.AA2;
 import java.util.*;
 
-public class Excercici5 {
+public class Exercici5 {
 
     public static void main(String[]args) {
 

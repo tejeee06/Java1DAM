@@ -5,14 +5,17 @@ public class calcularMaxMin {
     public static void main(String[]args) {
 
         int a = 4;
-        int b = 5;
-        int c = 9;
+        int b = 8;
+        int c = 13;
 
         calcularGran(a, b, c);
 
         int petit = calcularPetit(a, b, c);
 
         System.out.println("El numero mes petit es el numero " +petit);
+
+        int mitjana = calcularMitjana(a, b, c);
+        System.out.println("La mitjana dels tres numeros es de : " +mitjana);
 
     }
 
@@ -51,6 +54,13 @@ public class calcularMaxMin {
 
         }
         
+    }
+
+    public static int calcularMitjana(int num1, int num2, int num3) {
+
+        int resultat = (num1 + num2 + num3) / 3;
+
+        return resultat;
     }
     
 }

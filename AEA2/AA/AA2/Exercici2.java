@@ -27,7 +27,7 @@ public class Exercici2 {
 
             for (int columna= 0; columna < matriu[i].length; columna++) {
 
-                System.out.println(matriu[i][columna] +" ");
+                System.out.print(matriu[i][columna] +" ");
             }
 
             System.out.println();

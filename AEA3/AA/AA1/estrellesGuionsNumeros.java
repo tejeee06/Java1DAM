@@ -17,7 +17,7 @@ public class estrellesGuionsNumeros {
         
         while(!parar) {
 
-            System.out.println("Quin es el caracter que vols introduir ? (si vols para escriu fi)");
+            System.out.println("Quin es el caracter que vols introduir ? (si vols parar escriu fi)");
             String paraula = lector.nextLine();
 
             if (paraula.equalsIgnoreCase("fi")) {
@@ -64,5 +64,5 @@ public class estrellesGuionsNumeros {
         }
 
     }
-    
+
 }

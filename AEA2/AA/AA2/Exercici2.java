@@ -8,31 +8,25 @@ public class Exercici2 {
         Scanner lector = new Scanner(System.in);
 
 
-        System.out.println("Quin es el numero de columnes que vols per a la teva matriu ??");
-        int j = lector.nextInt();
+        System.out.println("Quin es el numero de columnes que vols a la matriu ? ");
+        int coloumnes = lector.nextInt();
 
-        int [][] matriu = new int[5][j];
+        int[][] matrix = new int [5][coloumnes];
+        Random aleatori = new Random();
+        
+        for(int i = 0; i < matrix.length; i++) {
 
-        Random numAleatori = new Random();
+            for(int j = 0; j < matrix[i].length; j++) {
 
-        for (int i = 0; i < matriu.length; i++ ) {
+                matrix[i][j] = aleatori.nextInt(11);
+                System.out.print(matrix[i][j] + " ");
 
-            for (int columa = 0; columa < matriu[i].length; columa++) {
-
-                matriu[i][columa] = numAleatori.nextInt(11);
-            }
-        }
-
-        for (int i = 0; i < matriu.length; i++) {
-
-            for (int columna= 0; columna < matriu[i].length; columna++) {
-
-                System.out.print(matriu[i][columna] +" ");
             }
 
             System.out.println();
 
         }
-        
+
     }
+    
 }

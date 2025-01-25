@@ -5,64 +5,67 @@ public class estrellesGuionsNumeros {
 
     public static void main(String[]args) {
 
-        estrellesGuionsNumeros.output();
+        estrellesGuionsNumeros programa = new estrellesGuionsNumeros();
+        programa.inici();
 
     }
 
-    public static void output() {
+    public void inici() {
 
         Scanner lector = new Scanner(System.in);
-
         boolean parar = false;
-        
-        while(!parar) {
+        String condicio = "";
 
-            System.out.println("Quin es el caracter que vols introduir ? (si vols parar escriu fi)");
-            String paraula = lector.nextLine();
+        while (!parar) {
 
-            if (paraula.equalsIgnoreCase("fi")) {
-
-                parar = true;
-
+            System.out.println("Escriu fi si vols finalitzar el programa , escriu continuar si vols continuar");
+            condicio = lector.nextLine();
+            if (condicio.equalsIgnoreCase("fi")) {
                 System.out.println("Programa finalitzat");
-                continue; // Utilitzem continue per si es compleix el if que ignori la resta de codi del bucle i pugi sortir
-
+                parar = true;
+                continue;
             }
+            else if (condicio.equalsIgnoreCase("continuar")) {
+                char caracter = 'a';
+                boolean charOk = false;
+                int cops = 0;
+                boolean copsOk = false;
 
-            int cops = 0;
-            boolean inputValid = false;
-
-            while (!inputValid) {
-
-                System.out.println("Quants cops vols que s'executi el teu caracter ?");
-                // Agafem les dades d'entrada com un String per evitarnos problemes amb les futures interacions
-                String numeroCops = lector.nextLine();
-
-                // Fem un control d'errors eficient amb els blocs Try i Catch
-                try {
-
-                    cops = Integer.parseInt(numeroCops); // Intentem convertir el String d'abans a un Int
-                    inputValid = true; // En el cas de que es pugi , canviem l'input valid a true i sortim , sino pasem al catch
-
-                }
-                catch (NumberFormatException e) { // En el cas de que no s'hagi introduit un numero (NumberFormatException) , donara el seguent error
-
-                    System.out.println("Error , has d'introduir un numero.");
-
+                while (!charOk) {
+                    System.out.println("Introdueix el caracter que vulgis imprimir : ");
+                    if (lector.hasNext()) {
+                        String input = lector.next();
+                        if (input.length() == 1) {
+                            caracter = input.charAt(0);
+                            charOk = true;
+                        }
+                        else {
+                            System.out.println("Opcio no reconeguda , introdueix un caracter");
+                        }
+                    }
                 }
 
+                while (!copsOk) {
+                    System.out.println("Introdueix els cops que vols que s'executi el teu caracter : ");
+                    if (lector.hasNextInt()) {
+                        cops = lector.nextInt();
+                        copsOk = true;
+                    }
+                    else {
+                        System.out.println("Numero no reconegut");
+                        lector.next();
+                    }
+                }
+
+                for (int i = 0; i < cops; i++) {
+                    System.out.print(caracter +" ");
+                }
+                System.out.println();
             }
-
-            for (int i = 0; i < cops; i++) {
-
-                System.out.print(paraula);
-                
-            }
-
-            System.out.println();
-
+            else {
+                System.out.println("Opció no reconeguda");
+            }      
         }
-
     }
 
 }

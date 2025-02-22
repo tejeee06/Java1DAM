@@ -54,4 +54,25 @@ public class lectorDades {
         }
         return valor;
     }
+
+    public char llegirChar(String missatge) {
+        boolean charOK = false;
+        char lletra = 'o';
+
+        System.out.println(missatge);
+        while(!charOK) {
+            String entrada = lector.next();
+
+            if (entrada.length() == 1) {
+                lletra = entrada.charAt(0);
+                charOK = true;
+            }
+            else {
+                System.out.println("Entrada no valida");
+                lector.next();
+            }
+        }
+        
+        return lletra;
+    }
 }

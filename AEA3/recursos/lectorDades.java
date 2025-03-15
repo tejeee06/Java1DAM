@@ -75,4 +75,21 @@ public class lectorDades {
         
         return lletra;
     }
+
+    public String llegirString(String missatge) {
+        boolean stringOK = false;
+        String valor = "Aa";
+        System.out.println(missatge);
+        while(!stringOK) {
+            if(lector.hasNextLine()) {
+                stringOK = true;
+                valor = lector.nextLine();
+            }
+            else {
+                System.out.println("Error aixo no es un string");
+                lector.next();
+            }
+        }
+        return valor;
+    }
 }

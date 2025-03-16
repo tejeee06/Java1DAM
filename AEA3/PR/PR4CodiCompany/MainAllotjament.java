@@ -26,10 +26,10 @@ public class MainAllotjament {
             System.out.println();
             System.out.println("1. Afegir nou allotjament");
             System.out.println("2. Mostrar els allotjaments disponibles");
-            System.out.println("3.Reservar allotjament");
-            System.out.println("4.Alliberar allotjament");
-            System.out.println("5.Cerca personalitzada");
-            System.out.println("6.Sortir del programa");
+            System.out.println("3. Reservar allotjament");
+            System.out.println("4. Alliberar allotjament");
+            System.out.println("5. Cerca personalitzada");
+            System.out.println("6. Sortir del programa");
             System.out.println();
             String opcio = lector.llegirString("Escull una opcio : ");
 

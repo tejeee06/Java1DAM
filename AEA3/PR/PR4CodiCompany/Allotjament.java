@@ -54,7 +54,7 @@ public abstract class Allotjament {
             System.out.println("Alliberació exitosa");
             return true;
         } else {
-            System.out.println("Aquest allotjament no està reservat!!");
+            System.out.println("Aquest allotjament no està reservat");
             return false;
         }
     }

@@ -33,7 +33,7 @@ public class Apartament extends Allotjament {
 
     @Override
     public void mostrarInformacio() {
-        System.out.println("Tipus Apartament , Nom de l'Apartament :  " +getNom() +", Capacitat de l'Apartament : " +getCapacitat() +" persones ,  Disponibilitat de l'Apartament : " +isDisponible() +", Disposa de cuina : " +getTeCuina() +", Preu de l'Apartament : " +calcularPreuNit() +"€" );
+        System.out.println("Tipus Apartament , Nom de l'Apartament :  " +getNom() +", Capacitat de l'Apartament : " +getCapacitat() +" persones ,  Disponibilitat de l'Apartament : " +isDisponible() +", Disposa de cuina : " +getTeCuina() +", Preu de l'Apartament : " +calcularPreuNit());
     }
     
 }

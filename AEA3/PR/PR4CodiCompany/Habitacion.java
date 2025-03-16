@@ -30,7 +30,7 @@ public class Habitacion extends Allotjament {
     
     @Override
     public void mostrarInformacio() {
-       System.out.println("Tipus Habitacio estandar , Nom de l'habitacio :  " +getNom() +", Capacitat de l'habitacio : " +getCapacitat() +" persones ,  Disponibilitat de l'habitacio : " +isDisponible() +", Numero de llits : " +getLlits() +", Preu de l'habitacio : " +calcularPreuNit() +"€" );
+       System.out.println("Tipus Habitacio estandar , Nom de l'habitacio :  " +getNom() +", Capacitat de l'habitacio : " +getCapacitat() +" persones ,  Disponibilitat de l'habitacio : " +isDisponible() +", Numero de llits : " +getLlits() +", Preu de l'habitacio : " +calcularPreuNit());
     }
 
 }

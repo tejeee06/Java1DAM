@@ -138,47 +138,13 @@ public class MainAllotjament {
     }
 
     public void gestionarReserva() {
-        String nomReserva = lector.llegirString("Introdueix el nom de l'Allotjament a reservar");
-        boolean exist = false;
-        for (int i = 0; i < contador; i++) {
-            if (allotjaments[i].getNom().equalsIgnoreCase(nomReserva)) {
-                exist = true;
-                if (allotjaments[i].isDisponible()) {
-                    allotjaments[i].reservar();
-                }
-                else {
-                    System.out.println("L' allotjament ya esta reservat.");
-                }
-
-                break;
-            }
-        }
-
-        if (!exist) {
-            System.out.println("No s'ha trobat aquest allotjament.");
-        }
+        String nomReserva = lector.llegirString("Introdueix el nom de l'Allotjament a reservar : ");
+        Allotjament.gestionarReserva(allotjaments, contador, nomReserva);
     }
 
     public void gestionarAlliberaments() {
-        String nomAlliberament = lector.llegirString("Introdueix el nom de l'Allotjament a alliberar : ");
-        boolean exist = false;
-        for (int i = 0; i < contador; i++) {
-            if (allotjaments[i].getNom().equalsIgnoreCase(nomAlliberament)) {
-                exist = true;
-                if (allotjaments[i].isDisponible()) {
-                    System.out.println("L' allotjament no esta reservat");
-                }
-                else {
-                    allotjaments[i].alliberar();
-                }
-
-                break;
-            }
-        }
-
-        if (!exist) {
-            System.out.println("No s'ha trobat l'allotjament");
-        }
+        String nomAlliberament = lector.llegirString("Introdueix el nom de l' Allotjament a alliberar : ");
+        Allotjament.gestionarAlliberament(allotjaments, contador, nomAlliberament);
     }
 
     public void cercaPersonalitzada() {

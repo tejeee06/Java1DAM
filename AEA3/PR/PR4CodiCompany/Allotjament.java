@@ -61,4 +61,48 @@ public abstract class Allotjament {
 
     public abstract double calcularPreuNit();
     public abstract void mostrarInformacio();
+
+
+    public static void gestionarReserva(Allotjament[] allotjaments, int contador, String nomReserva) {
+        boolean exist = false;
+
+        for (int i = 0; i < contador; i++) {
+            Allotjament a = allotjaments[i];
+            if (a.getNom().equalsIgnoreCase(nomReserva)) {
+                exist = true;
+                if (a.isDisponible()) {
+                    a.reservar();
+                } else {
+                    System.out.println("Error , l' Allotjament ya esta reservat.");
+                }
+                break;
+            }
+        }
+
+        if (!exist) {
+            System.out.println("No s' ha trobat aquest allotjament");
+        }
+    }
+
+    public static void gestionarAlliberament(Allotjament[] allotjaments, int contador, String nomAlliberament) {
+        boolean exist = false;
+
+        for (int i = 0; i < contador; i++) {
+            Allotjament a = allotjaments[i];
+            if(a.getNom().equalsIgnoreCase(nomAlliberament)) {
+                exist = true;
+                if(a.isDisponible()) {
+                    System.out.println("Error , l' Allotjament no esta reservat");
+                }
+                else {
+                    a.alliberar();
+                }
+                break;
+            }
+        }
+
+        if(!exist) {
+            System.out.println("No s' ha trobat aquest allotjament");
+        }
+    }
 }

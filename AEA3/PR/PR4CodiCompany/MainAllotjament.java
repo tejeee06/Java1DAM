@@ -1,5 +1,7 @@
 package AEA3.PR.PR4CodiCompany;
 
+import java.util.ArrayList;
+
 import AEA3.recursos.lectorDades;
 
 public class MainAllotjament {
@@ -139,7 +141,10 @@ public class MainAllotjament {
 
     public void gestionarReserva() {
         String nomReserva = lector.llegirString("Introdueix el nom de l'Allotjament a reservar : ");
-        Allotjament.gestionarReserva(allotjaments, contador, nomReserva);
+        int numPersones = lector.llegirInt("Introdueix el nombre de persones que hi seran : ");
+        int numDies = lector.llegirInt("Introdueix el nombre de dies que vols reservar : ");
+
+        Allotjament.gestionarReserva(allotjaments, contador, nomReserva, numPersones, numDies);
     }
 
     public void gestionarAlliberaments() {
@@ -153,22 +158,39 @@ public class MainAllotjament {
         System.out.println("2. Cercar per caracteristiques : ");
         System.out.println();
         String opcio = lector.llegirString("Escull una opcio : ");
-        boolean exist = false;
 
         switch (opcio) {
             case "1":
                 double preuMax = lector.llegirDouble("Introdueixi el preu maxim que es vol gastar : ");
-                System.out.println("Resultats de la recerca");
+                ArrayList<Allotjament> preuFiltrat = new ArrayList<>();
                 for (int i = 0; i < contador; i++) {
                     Allotjament a = allotjaments[i];
                     if (a.isDisponible() && a.calcularPreuNit() <= preuMax) {
-                        System.out.println("Allotjament " +a.getNom() +" amb preu de : " +a.calcularPreuNit());
-                        exist = true;
+                        preuFiltrat.add(a);
                     }
                 }
 
-                if (!exist) {
-                    System.out.println("No s'han trobat allotjaments amb les caracteristiques especificades");
+                if (!preuFiltrat.isEmpty()) {
+                    System.out.println("Ordenar per:");
+                    System.out.println("1. Preu Ascendent");
+                    System.out.println("2. Preu Descendent");
+                    String opcioPreus = lector.llegirString("Opcio (escull el numero): ");
+            
+                    preuFiltrat.sort((a1, a2) -> {
+                        if (opcioPreus.equalsIgnoreCase("1")) {
+                            return Double.compare(a1.calcularPreuNit(), a2.calcularPreuNit());
+                        } else {
+                            return Double.compare(a2.calcularPreuNit(), a1.calcularPreuNit());
+                        }
+                    });
+
+                    System.out.println("Resultats endreçats : ");
+                    for(Allotjament a : preuFiltrat) {
+                        a.mostrarInformacio();
+                        System.out.println();
+                    }
+                } else {
+                    System.out.println("No hi ha resultats per aquest filtre");
                 }
                 break;
             case "2":
@@ -179,50 +201,55 @@ public class MainAllotjament {
                 String subOpcio = lector.llegirString("Escolleix una opcio : ");
 
                 if (subOpcio.equalsIgnoreCase("Cuina")) {
-                    boolean trobatCuina = false;
+                    ArrayList<Apartament> cuinaFiltrat = new ArrayList<>();
 
                     for (int i = 0; i < contador; i++) {
-                        Allotjament a = allotjaments[i];
-
-                        if (a instanceof Apartament) {
-                            Apartament apt = (Apartament) a;
-
+                        if (allotjaments[i] instanceof Apartament) {
+                            Apartament apt = (Apartament) allotjaments[i];
                             if (apt.isDisponible() && apt.getTeCuina()) {
-                                trobatCuina = true;
-                                apt.mostrarInformacio();
-                                System.out.println();
+                                cuinaFiltrat.add(apt);
                             }
                         }
                     }
 
-                    if (!trobatCuina) {
-                        System.out.println("No s'ha trobat un apartament amb aquestes caracteristiques");
+                    if (!cuinaFiltrat.isEmpty()) {
+                        System.out.println("Apartaments amb cuina Disponibles : ");
+                        cuinaFiltrat.forEach(apt -> {
+                            apt.mostrarInformacio();
+                            System.out.println();
+                        });
+                    } else {
+                        System.out.println("No hi han apartaments disponibles amb cuina");
                     }
-                }
-                else if (subOpcio.equalsIgnoreCase("Jardi") || subOpcio.equalsIgnoreCase("Piscina")) {
-                    boolean trobatCasa = false;
+                } else if (subOpcio.equalsIgnoreCase("Jardi") || subOpcio.equalsIgnoreCase("Piscina")) {
+                    ArrayList<Casa> casesJardiPiscina = new ArrayList<>();
 
                     for (int i = 0; i < contador; i++) {
-                        Allotjament a = allotjaments[i];
-                        if (a instanceof Casa) {
-                            Casa casa = (Casa) a;
+                        if (allotjaments[i] instanceof Casa) {
+                            Casa casa = (Casa) allotjaments[i];
+                            boolean teCaracteristica = casa.getTeJardi() || casa.getTePiscina();
 
-                            if (casa.isDisponible() && (casa.getTeJardi() || casa.getTePiscina())) {
-                                trobatCasa = true;
-                                casa.mostrarInformacio();
-                                System.out.println();
+                            if (casa.isDisponible() && teCaracteristica) {
+                                casesJardiPiscina.add(casa);
                             }
                         }
                     }
 
-                    if (!trobatCasa) {
-                        System.out.println("No s'ha trobat una casa amb aquestes caracteristiques");
+                    if (!casesJardiPiscina.isEmpty()) {
+                        System.out.println("Cases Rurals amb Jardi o Piscina : ");
+                        casesJardiPiscina.forEach(casa -> {
+                            casa.mostrarInformacio();
+                            System.out.println("Característiques:");
+                            if (casa.getTeJardi()) System.out.println("- Jardí");
+                            if (casa.getTePiscina()) System.out.println("- Piscina");
+                            System.out.println();
+                        });
+                    } else {
+                        System.out.println("No hi ha cases rurals amb aquestes caracteristiques ");
                     }
-                }
-                else {
+                } else {
                     System.out.println("Error , opcio no reconeguda");
                 }
-                
                 break;
             default:
                 System.out.println("Error , opcio no reconeguda");

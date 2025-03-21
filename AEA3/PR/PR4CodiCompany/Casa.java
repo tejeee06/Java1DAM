@@ -37,6 +37,15 @@ public class Casa extends Allotjament {
 
     @Override
     public void mostrarInformacio() {
-        System.out.println("Casa Rural :  Nom de la casa : " +getNom() +", Capacitat de la casa : " +getCapacitat() +" persones, Disponibilitat de la casa : " +getCapacitat() +", Disposa de Jardi : " +getTeJardi() +", Disposa de Piscina : " +getTePiscina() +", Preu de la casa : " +calcularPreuNit());
+        System.out.println("Casa Rural :  Nom de la casa : " +getNom() +", Capacitat de la casa : " +getCapacitat() +" persones, Disponibilitat de la casa : " +getDisponible() +", Disposa de Jardi : " +getTeJardi() +", Disposa de Piscina : " +getTePiscina() +", Preu de la casa per nit : " +calcularPreuNit());
+    }
+
+    @Override
+    public double calcularPreuReserva(int numPersones, int numDies) {
+        if (numPersones > getCapacitat()) {
+            return -1;
+        }
+        
+        return calcularPreuNit() * numDies;
     }
 }

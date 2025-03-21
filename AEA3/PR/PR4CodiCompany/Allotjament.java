@@ -61,21 +61,30 @@ public abstract class Allotjament {
 
     public abstract double calcularPreuNit();
     public abstract void mostrarInformacio();
+    public abstract double calcularPreuReserva(int numPersones, int numDies);
 
 
-    public static void gestionarReserva(Allotjament[] allotjaments, int contador, String nomReserva) {
+    public static void gestionarReserva(Allotjament[] allotjaments, int contador, String nomReserva, int numPersones, int numDies) {
         boolean exist = false;
 
         for (int i = 0; i < contador; i++) {
             Allotjament a = allotjaments[i];
             if (a.getNom().equalsIgnoreCase(nomReserva)) {
                 exist = true;
-                if (a.isDisponible()) {
-                    a.reservar();
-                } else {
-                    System.out.println("Error , l' Allotjament ya esta reservat.");
+                if (!a.isDisponible()) {
+                    System.out.println("Error , l'allotjament ya esta reservat");
+                    return;
                 }
-                break;
+                if (numPersones > a.getCapacitat()) {
+                    System.out.println("Error , es supera la capacitat de l'apartament");
+                    return;
+                }
+
+                double preuTotal = a.calcularPreuReserva(numPersones, numDies);
+                a.reservar();
+                System.out.println("Preu total de la reserva " +preuTotal);
+                return;
+
             }
         }
 

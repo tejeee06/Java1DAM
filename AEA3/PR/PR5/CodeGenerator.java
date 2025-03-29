@@ -12,13 +12,13 @@ public class CodeGenerator {
         StringBuilder code = new StringBuilder();
 
         for (int i = 0; i < codeLength; i++) {
-            code.append(generateRandomChar())
+            code.append(generateRandomChar());
         }
 
-        return code.toString();
+        return  code.toString();
     }
 
-    private char generateRandomChar() {
+    public char generateRandomChar() {
         long nano = System.nanoTime();
         int index = (int) (nano % ABC.length());
         return ABC.charAt(index);

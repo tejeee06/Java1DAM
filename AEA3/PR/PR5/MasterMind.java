@@ -1,35 +1,27 @@
 package AEA3.PR.PR5;
 
-import javax.print.DocFlavor.STRING;
-
 public class MasterMind {
-    private final int codeLength = 3;
-    private final CodeGenerator codeGenerator;
-    private final Player player;
-    private final Feedback feedback;
+   private static final int CODE_LENGTH = 3;
 
-    public MasterMind() {
-        this.codeGenerator = new codeGenerator(codeLength);
-        this.player = new HumanPlayer(codeLength);
-        this.feedback = new Feedback();
-    }
+   public static void main(String[] args) {
+       CodeGenerator generador = new CodeGenerator(CODE_LENGTH);
+       Player jugador = new HumanPlayer(CODE_LENGTH);
+       Feedback feedback = new Feedback();
+       String secret = generador.generateCode();
+       boolean encertat = false;
 
-    public static void main(String[] args) {
-        String secret = codeGenerator.generateCode();
-        boolean guessed = false;
+       while (!encertat) {
+           String intent = jugador.makeGuess();
+           String pista = feedback.getFeedback(secret, intent);
 
-        while (!guessed) {
-            String guess = player.makeGuees();
-            String feedbackString = feedback.getFeedback(secret, guess);
-
-            System.out.println("La resposta es : " +feedbackString);
-            if (guess.equals(secret)) {
-                System.out.println("Has encertat ! ");
-                guessed = true;
-            }
-            else {
-                System.out.println("Continua intentant - ho");
-            }
-        }
-    }
+           System.out.println("La resposta es " +pista);
+           if (intent.equals(secret)) {
+               System.out.println("Has encertat !!.");
+               encertat = true;
+           }
+           else {
+               System.out.println("Continua intentant-ho.");
+           }
+       }
+   }
 }

@@ -1,32 +1,32 @@
 package AEA3.PR.PR5;
 
-import javax.print.DocFlavor.STRING;
+import java.util.Scanner;
 
-import AEA3.recursos.lectorDades;
-
-public class HumanPlayer extends Player {
+public class HumanPlayer extends  Player {
     private static final String ABC = "abcdefghijklmnopqrstuvwxyz";
     private final int guessLength;
-    private final lectorDades lector;
+    private final Scanner scanner;
 
     public HumanPlayer(int guessLength) {
         this.guessLength = guessLength;
-        this.lector = new lectorDades();
+        this.scanner = new Scanner(System.in);
     }
 
     @Override
-    public String makeGuees() {
+    public String makeGuess() {
         String guess;
 
         do {
-            
-        } while (condition);
+            System.out.println("Escriu " +guessLength +" lletres minuscules : ");
+            guess = scanner.next();
+        } while (!isValidGuess(guess));
+
+        return guess;
     }
 
-    public boolean isValidGuess(String guess) {
+    private boolean isValidGuess(String guess) {
         if (guess.length() != guessLength) {
             System.out.println("Aquesta resposta no es valida");
-            return false;
         }
 
         for (int i = 0; i < guess.length(); i++) {

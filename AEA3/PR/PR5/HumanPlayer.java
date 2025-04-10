@@ -2,10 +2,10 @@ package AEA3.PR.PR5;
 
 import java.util.Scanner;
 
-public class HumanPlayer extends  Player {
-    private static final String ABC = "abcdefghijklmnopqrstuvwxyz";
-    private final int guessLength;
-    private final Scanner scanner;
+public abstract class HumanPlayer extends  Player {
+    protected static final String ABC = "abcdefghijklmnopqrstuvwxyz";
+    protected final int guessLength;
+    protected final Scanner scanner;
 
     public HumanPlayer(int guessLength) {
         this.guessLength = guessLength;
@@ -13,30 +13,26 @@ public class HumanPlayer extends  Player {
     }
 
     @Override
-    public String makeGuess() {
-        String guess;
+    public abstract String makeGuess();
 
-        do {
-            System.out.println("Escriu " +guessLength +" lletres minuscules : ");
-            guess = scanner.next();
-        } while (!isValidGuess(guess));
-
-        return guess;
+    // Nuevo método para obtener la longitud sin pedir entrada
+    public int getGuessLength() {
+        return guessLength;
     }
 
-    private boolean isValidGuess(String guess) {
+    protected boolean isValidGuess(String guess) {
         if (guess.length() != guessLength) {
-            System.out.println("Aquesta resposta no es valida");
+            System.out.println("Aquesta resposta no és vàlida");
+            return false; // Añadimos el return faltante
         }
 
         for (int i = 0; i < guess.length(); i++) {
             char c = guess.charAt(i);
             if (ABC.indexOf(c) == -1) {
-                System.out.println("Aquesta resposta no es valida");
+                System.out.println("Aquesta resposta no és vàlida");
                 return false;
             }
         }
-
         return true;
     }
 }

@@ -2,8 +2,6 @@ package AEA4.ExceptionsExercicis.ContadorParaules;
 
 import java.io.*;
 
-import javax.imageio.IIOException;
-
 public class contador {
     private static File arxiuEntrada = new File("AEA4/ExceptionsExercicis/ContadorParaules/entrada.txt");
     private static File arxiuSortida = new File("AEA4/ExceptionsExercicis/ContadorParaules/sortida.txt");
@@ -15,7 +13,7 @@ public class contador {
             }
 
             if (!arxiuEntrada.canRead()) {
-                throw new IIOException("L'arxiu d'entrada no es pot llegir.");
+                throw new IOException("L'arxiu d'entrada no es pot llegir.");
             }
 
             int totalParaules = comptadorParaules();

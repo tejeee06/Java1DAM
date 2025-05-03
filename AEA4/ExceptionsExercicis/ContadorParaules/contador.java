@@ -51,6 +51,7 @@ public class contador {
     private static void escriureNombre(int a) throws IOException {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(arxiuSortida))) {
             writer.write("El teu arxiu te " +a +" paraules");
+            writer.newLine();
         }
     }
 }

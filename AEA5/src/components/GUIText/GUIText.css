@@ -1,0 +1,45 @@
+.guitext-container {
+  background-color: #f0e8d9; 
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #d4a017; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px; 
+  margin-top: 20px;
+}
+
+.guitext-container h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  color: #2d2d2d;
+  margin-bottom: 15px;
+}
+
+.guitext-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.guitext-field label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  color: #2d2d2d;
+  margin-bottom: 5px;
+}
+
+.guitext-field input {
+  padding: 8px 12px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  color: #2d2d2d;
+  background-color: #ffffff;
+  border: 2px solid #d4a017;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.guitext-field input:focus {
+  border-color: #a17b12; 
+}

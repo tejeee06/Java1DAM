@@ -6,10 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5173:5173" # Mapear el puerto de Vite
+      - "5174:5173" # Mapear el puerto 5174 (host) al 5173 (contenedor)
     volumes:
-      - .:/app # Montar el directorio local para desarrollo en tiempo real
-      - /app/node_modules # Evitar que node_modules local se sobrescriba
+      - .:/app
+      - /app/node_modules
     environment:
-      - CHOKIDAR_USEPOLLING=true # Mejorar la detección de cambios en Windows
+      - CHOKIDAR_USEPOLLING=true
     command: npm run dev

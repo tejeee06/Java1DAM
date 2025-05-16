@@ -1,15 +1,13 @@
-version: '3.8'
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5174:5173" # Mapear el puerto 5174 (host) al 5173 (contenedor)
+      - "3000:5173" # Mapear 3000 (host) a 5173 (contenedor)
     volumes:
       - .:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: npm run dev
+    command: npm run start # Solo Vit

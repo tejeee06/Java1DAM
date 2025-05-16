@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 dist/
+build/
 
 # Electron build artifacts
 out/
@@ -34,3 +35,6 @@ Thumbs.db
 
 # Docker
 docker-compose.override.yml
+
+# Vite cache
+.vite/

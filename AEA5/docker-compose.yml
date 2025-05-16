@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  aea5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ELECTRON_START_URL=http://localhost:5173
+    privileged: true
+    tty: true
+    stdin_open: true
+    command: npm run dev

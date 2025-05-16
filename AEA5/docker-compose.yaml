@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173" # Mapear el puerto de Vite
+    volumes:
+      - .:/app # Montar el directorio local para desarrollo en tiempo real
+      - /app/node_modules # Evitar que node_modules local se sobrescriba
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Mejorar la detección de cambios en Windows
+    command: npm run dev

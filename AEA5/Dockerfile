@@ -1,30 +1,20 @@
-# Usar Node.js 18
-FROM node:18
+# Usar una imagen base de Node.js
+FROM node:20
 
-# Crear y establecer el directorio de trabajo
-RUN mkdir -p /aea5
-WORKDIR /aea5
+# Establecer el directorio de trabajo
+WORKDIR /app
 
-# Verificar WORKDIR
-RUN pwd && ls -la
-
-# Copiar package.json y package-lock.json
-COPY package.json package-lock.json ./
+# Copiar package.json y package-lock.json (si existe)
+COPY package*.json ./
 
 # Instalar dependencias
 RUN npm install
 
-# Verificar node_modules
-RUN ls -la node_modules | head -n 10
-
 # Copiar el resto del código
 COPY . .
 
-# Verificar archivos copiados
-RUN ls -la
+# Exponer el puerto de Vite
+EXPOSE 5173
 
-# Exponer el puerto de Vite (cambiamos a 5174)
-EXPOSE 5174
-
-# Comando por defecto (desarrollo)
+# Comando para iniciar el proyecto en modo desarrollo
 CMD ["npm", "run", "dev"]

@@ -4,10 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:5173" # Mapear 3000 (host) a 5173 (contenedor)
+      - "5173:5173" # Mapear 5173 (host) a 5173 (contenedor)
     volumes:
       - .:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: npm run start # Solo Vit
+    command: npm run start # Solo ejecuta Vite

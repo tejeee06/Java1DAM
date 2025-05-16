@@ -2,24 +2,26 @@
 FROM node:18
 
 # Crear y establecer el directorio de trabajo
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /aea5
+WORKDIR /aea5
 
 # Verificar WORKDIR (depuración)
 RUN pwd && ls -la
 
 # Copiar package.json y package-lock.json
-COPY package.json package-lock.json /app/
+COPY package.json package-lock.json ./
 
-# Instalar dependencias
+# Instalar dependencias (descarga node_modules)
 RUN npm install
 
+# Verificar node_modules (depuración)
+RUN ls -la node_modules | head -n 10
+
 # Copiar el resto del código
-COPY src/ /app/src/
-COPY index.html main.js vite.config.js /app/
+COPY . .
 
 # Verificar archivos copiados (depuración)
-RUN ls -la /app
+RUN ls -la
 
 # Exponer el puerto de Vite
 EXPOSE 5173

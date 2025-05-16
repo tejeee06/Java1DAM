@@ -8,11 +8,9 @@ services:
       - .:/aea5
       - /aea5/node_modules
     ports:
-      - "5173:5173"
+      - "5174:5174"
     environment:
-      - DISPLAY=${DISPLAY}
-      - ELECTRON_START_URL=http://localhost:5173
-    privileged: true
+      - ELECTRON_START_URL=http://localhost:5174
     tty: true
     stdin_open: true
     command: npm run dev
